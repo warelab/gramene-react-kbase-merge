@@ -1,4 +1,4 @@
-    kb_define('kbpaths', [], function(paths) {
+    define('kbpaths', [], function(paths) {
         requirejs.config({
             baseUrl : 'src/kbsrc/widgets',
             urlArgs: "bust=" + (new Date()).getTime(),
