@@ -5,7 +5,6 @@
     [
         'jquery',
     	'kbwidget',
-    	'narrativeMethodStore',
     	'kbaseAccordion',
     ],
     function ($) {

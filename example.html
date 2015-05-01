@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<!--
+    The magic incantation to compile the kbase widgets is
+    r.js -o paths.requireLib=../../../ext/requirejs/2.1.9/require mainConfigFile=kbpaths.js name=all include=requireLib out=kbase.js baseUrl=widgets
+
+-->
+
+<html>
+
+    <head>
+
+        <!--<link href="../../ext/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../ext/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+        <script data-main = '../../src/kbpaths' src = '../../ext/requirejs/2.1.9/require.js'></script>-->
+
+    <link href="ext/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="ext/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="ext/react/0.13.1/build/react-with-addons.js"></script>
+    <script src="ext/react/0.13.1/build/JSXTransformer.js"></script>
+    <script src = 'src/kbsrc/kbase.js'></script>
+    <script src = 'app.js'></script>
+
+<style>
+.bar {
+
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+</style>
+
+    </head>
+
+    <body>
+
+        <div>
+            Simple demonstrations of visualization widgets. Mouse over the charts, they're all interactive.<br>
+            The force directed graph has draggable nodes, and they can be selected by drawing on the box.
+        </div>
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+                  React.render(
+                    <Linechart
+                        scaleAxes = {true}
+                        xLabel = 'Some useful experiment'
+                        yLabel = 'Meaningful data'
+                        dataset = {
+                            [
+                                {
+                                    color : 'green',
+                                    label : 'Data set 1',
+                                    values : [{x : 0, y : -1}, {x : 1, y : -0.5}, {x : 2, y : 0}, {x : 3, y : 0.5}, {x : 4, y : 1}],
+                                },
+                                {
+                                    color : 'blue',
+                                    label : 'Data set 2',
+                                    values : [{x : 0, y : 0.0001}, {x : 1, y : 100}, {x : 2, y : 0.0001}, {x : 3, y : 500}, {x : 4, y : .0001}],
+                                },
+                                {
+                                    color : 'gray',
+                                    label : 'mean line',
+                                    dasharray : 5,
+                                    values : [{x : 0, y : -0.3333}, {x : 1, y : 33.5}, {x : 2, y : 0.6667}, {x : 3, y : 167.833}, {x : 4, y : 1.6667}],
+                                },
+                            ]
+                        }>
+                    </Linechart>
+                    ,
+                    document.getElementById('linechart')
+                  );
+            })})
+        </script>
+        <div id = 'linechart' style = 'border : 1px solid green; width : 500px; height : 300px'></div>
+
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+                  React.render(
+                    <Piechart
+                        scaleAxes = {true}
+                        useUniqueID = {false}
+                        gradient = {true}
+                        startingPosition = "top"
+                        xLabel = "Some useful pie chart"
+                        innerRadius = {-100}
+                        outsideLabels = {true}
+                        dataset = {
+                            [
+                                {
+                                    value : 0.25,
+                                    color : '#00FFFF',
+                                    label : 'one'
+                                },
+                                {
+                                    value : 0.25,
+                                    color : 'blue',
+                                    label : 'two'
+                                },
+                                {
+                                    value : 0.25,
+                                    color : 'green',
+                                    label : 'three'
+                                },
+                                {
+                                    value : 0.125,
+                                    color : 'yellow',
+                                    label : 'four'
+                                },
+                                {
+                                    value : 0.125,
+                                    color : '#FF00FF',
+                                    label : 'five'
+                                },
+                            ]
+                        }>
+                    </Piechart>
+                    ,
+                    document.getElementById('piechart')
+                  );
+            })})
+        </script>
+        <div id = 'piechart' style = 'border : 1px solid green; width : 500px; height : 300px'></div>
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+                  React.render(
+                    <Barchart
+                        scaleAxes = {true}
+                        xLabel = "Widgets per revolution"
+                        yLabel = "Total Wingdings"
+                        dataset = {
+                            [
+                                {
+                                    bar : 'Bar 1',
+                                    value : 20,
+                                    color : 'red',
+                                },
+                                {
+                                    bar : 'Bar 2',
+                                    value : 50,
+                                    color : 'green'
+                                },
+                                {
+                                    bar : 'Bar 3',
+                                    value : 10,
+                                    color : 'blue',
+                                    label : 'Some meaningful mouseover value'
+                                },
+
+                                {
+                                    bar : 'Bar 4',
+                                    value : [10,20,30,40,50],
+                                    color : 'purple',
+                                },
+                                {
+                                    bar : 'Bar 5',
+                                    value : [10,20,30,40,50],
+                                    color : ['red', 'green', 'blue', 'cyan', 'magenta'],
+                                    label : ['6.67% effort', '13.34% talent', '20% failure', '26.67% determination', '33.33% mustard'],
+                                    stacked : true,
+                                },
+
+                            ]
+                        }>
+                    </Barchart>
+                    ,
+                    document.getElementById('barchart')
+                  );
+            })})
+        </script>
+        <div id = 'barchart' style = 'border : 1px solid green; width : 500px; height : 300px'></div>
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+                  React.render(
+                    <Scatterplot
+                        scaleAxes = {true}
+                        xLabel = "Rainy days"
+                        yLabel = "Elephant Sightings"
+                        dataset = {
+                            [
+                                {
+                                    x : 10,
+                                    y : 10,
+                                    weight : 10,
+                                    color  : 'blue',
+                                    label : 'This one looks like earth'
+                                },
+                                {
+                                    x : 20,
+                                    y : 12,
+                                    weight : 6,
+                                    color  : 'red',
+                                    label : 'This one looks like mars'
+                                },
+                                {
+                                    x : 40,
+                                    y : 8,
+                                    weight : 16,
+                                    color  : 'orange',
+                                    label : 'This one looks like jupiter'
+                                },
+                                {
+                                    x : 80,
+                                    y : 18,
+                                    weight : 13,
+                                    color  : 'green',
+                                    label : 'This one looks like Uranus'
+                                },
+                                {
+                                    x : 100,
+                                    y : 30,
+                                    weight : 5,
+                                    color  : 'black',
+                                },
+
+                            ]
+                        }>
+                    </Scatterplot>
+                    ,
+                    document.getElementById('scatterplot')
+                  );
+            })})
+        </script>
+        <div id = 'scatterplot' style = 'border : 1px solid green; width : 500px; height : 300px'></div>
+
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+
+                    var numPies = 20;
+                    var numSlices = 50;
+                    var newDataset = [];
+                    for (var i = 0; i < numPies; i++) {
+                        newDataset[i] = [];
+                    }
+                    for (var j = 0; j < newDataset.length; j++) {
+                        for (var i = 0; i < numSlices; i++) {
+
+                            var value = Math.random();
+
+                            newDataset[j].push(
+                                {
+                                    val : value,
+                                    label : 'Label ' + (i + 1),
+                                    tooltip : 'Ring : ' + (j + 1) + '<br>' + 'Label : ' + (i + 1) + '<br>' + 'Value : ' + value,
+                                }
+                            );
+                        }
+                    };
+
+                  React.render(
+                    <CircularHeatmap
+                        startingPosition = "final"
+                        xLabel = "Some useful experiment"
+                        labels = {false}
+                        innerRadius = {50}
+                        childOptions = {
+                            {
+                                labels : false,
+                                startingPosition : "final"
+                            }
+                        }
+                        datasets = { newDataset } >
+                    </CircularHeatmap>
+                    ,
+                    document.getElementById('circular_heatmap')
+                  );
+            })})
+        </script>
+        <div id = 'circular_heatmap' style = 'border : 1px solid green; width : 500px; height : 500px'></div>
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+
+                    var heatmap =
+                        {
+                            row_ids : [],
+                            row_labels : [],
+                            column_ids : [],
+                            column_labels : [],
+                            data : [],
+                        };
+                    var numCells = 20;
+                    var colors = ['red', 'green', 'blue', 'purple', 'cyan'];
+                    for (var idx = 0; idx < numCells; idx++) {
+                        var row = [];
+                        heatmap.data.push(row);
+                        for (var jdx = 0; jdx < numCells; jdx++) {
+                            row.push(Math.random());
+                        }
+                        heatmap.row_ids.push('Wingding' + idx);
+                        heatmap.row_labels.push('Wingding' + idx);
+                        heatmap.column_ids.push('Frobnoz' + idx);
+                        heatmap.column_labels.push('Frobnoz' + idx);
+                    }
+
+                  React.render(
+                    <Heatmap dataset = { heatmap } ulIcon = 'ware_logo.png'></Heatmap>
+                    ,
+                    document.getElementById('heatmap')
+                  );
+            })})
+        </script>
+        <div id = 'heatmap' style = 'border : 1px solid green; width : 500px; height : 500px'></div>
+
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+
+                  React.render(
+                    <ForcedNetwork
+                        scaleAxes = {true}
+                        xLabel = "The Solar System"
+                        dataset = {
+                            {
+                                nodes : [
+                                    {name : 'sun', radius : 42, fixed : true, x : 150, y : 150, color : 'yellow'},
+                                    {name : 'mercury', radius : 4, color : 'red'},
+                                    {name : 'venus', radius : 8, color : 'red'},
+                                    {name : 'earth', radius : 9, color : 'blue'},
+                                    {name : 'moon', radius : 3, color : 'gray'},
+                                    {name : 'mars', radius : 5, color : 'red'},
+                                    {name : 'jupiter', radius : 20, color : 'orange'},
+                                    {name : 'saturn', radius : 18, color : 'yellow',},
+                                    {name : 'uranus', radius : 14, color : 'green'},
+                                    {name : 'neptune', radius : 15, color : 'blue'},
+
+                                ],
+                                edges : [
+                                    {source : 0, target : 1},
+                                    {source : 1, target : 2},
+                                    {source : 2, target : 3},
+                                    {source : 3, target : 4, linkDistance : 20, charge : 0},
+                                    {source : 3, target : 5},
+                                    {source : 5, target : 6},
+                                    {source : 6, target : 7},
+                                    {source : 7, target : 8},
+                                    {source : 8, target : 9},
+                                ]
+                            }
+                        }
+
+                    ></ForcedNetwork>
+                    ,
+                    document.getElementById('network')
+                  );
+            })})
+        </script>
+        <div id = 'network' style = 'border : 1px solid green; width : 500px; height : 500px'></div>
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+
+                  React.render(
+                    <Treechart
+                        dataset = {
+                            {
+                                "name" : "animals",
+                                "children" : [
+                                    {
+                                        "name" : "dogs",
+                                        "children": [
+                                            {
+                                                "name" : "hounds",
+                                                "children" : [
+                                                    {"name" : "basset hound", "distance" : 0.5},
+                                                    {"name" : "bloodhound"},
+                                                    {"name" : "greyhound"},
+                                                    {"name" : "beagle"}
+                                                ]
+                                            },
+                                            {
+                                                "name" : "herding dogs",
+                                                "children" : [
+                                                    {"name" : "sheepdog"},
+                                                    {"name" : "German Shepherd"},
+                                                    {"name" : "Collie"},
+                                                    {"name" : "Pug"}
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name" : "cats",
+                                        "distance" : 2,
+                                        "children": [
+                                            {
+                                                "name" : "domestic cats",
+                                                "open" : false,
+                                                "children" : [
+                                                    {"name" : "Shorthair"},
+                                                    {"name" : "Persian"},
+                                                    {"name" : "Siamese"},
+                                                    {"name" : "Munchkin"}
+                                                ]
+                                            },
+                                            {
+                                                "name" : "wild cats",
+                                                "children" : [
+                                                    {
+                                                        "name" : "big cats",
+                                                        "children" : [
+                                                            {"name" : "tiger, the majestic beast which lives in Asia, has pretty stripes, and is the largest of the big cats"},
+                                                            {"name" : "lion"},
+                                                            {"name" : "cougar"},
+                                                            {"name" : "cheetah"}
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name" : "small cats",
+                                                        "children" : [
+                                                            {"name" : "lynx"},
+                                                            {"name" : "bobcat"},
+                                                            {"name" : "cougar"},
+                                                            {"name" : "cheetah"}
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name" : "fantasy",
+                                        "children": [
+                                            {"name" : "dragon"},
+                                            {"name" : "griffin"},
+                                            {"name" : "phoenix"},
+                                            {"name" : "harpy"}
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+
+                    ></Treechart>
+                    ,
+                    document.getElementById('tree')
+                  );
+            })})
+        </script>
+        <div id = 'tree' style = 'border : 1px solid green; width : 500px; height : 500px'></div>
+
+
+        <script type="text/jsx">
+            require(['all'], function() {
+                $(function() {
+                    React.render(
+                        <Vis debug = {true} width = "640" height = "480"></Vis>
+                        , document.getElementById('vis')
+                    )
+                })
+            })
+        </script>
+        <div id = 'vis'></div>
+
+    </body>
+
+</html>

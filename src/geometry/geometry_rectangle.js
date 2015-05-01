@@ -1,4 +1,4 @@
-window.window.Rectangle = function(origin,size) {
+window.Rectangle = function(origin,size) {
     if (origin == undefined) {
         origin = new Point(-1,-1);
     }

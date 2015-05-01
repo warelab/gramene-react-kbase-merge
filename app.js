@@ -103,7 +103,7 @@ VisContainer = React.createClass(
         attachJQ : function() {
 
             var container = this.getDOMNode().parentNode;
-console.log($(container), this.props.kbVis, this.props.options);
+
             $(container)[this.props.kbVis](this.props.options);
 
         },
@@ -327,7 +327,7 @@ window.Point.prototype.rectWithPoint = function(point) {
 
 
 },{}],6:[function(require,module,exports){
-window.window.Rectangle = function(origin,size) {
+window.Rectangle = function(origin,size) {
     if (origin == undefined) {
         origin = new Point(-1,-1);
     }
@@ -496,6 +496,7 @@ window.Size.prototype.asString = function () {
 
 
 },{}],8:[function(require,module,exports){
+//require('./kbsrc/kbase.js')
 require('./accordion')
 require('./vis')
 require('./VisContainer')

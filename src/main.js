@@ -1,3 +1,4 @@
+//require('./kbsrc/kbase.js')
 require('./accordion')
 require('./vis')
 require('./VisContainer')

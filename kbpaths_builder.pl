@@ -60,7 +60,7 @@ my $all = join("\n", map {"\t'$_',"} grep {$_ ne 'all'} sort keys %paths);
 
 if (@ARGV) {
     print <<"eKBALL";
-kb_define('all',
+define('all',
     [
 $all
     ],
@@ -72,7 +72,7 @@ eKBALL
 }
 else {
 print <<"eKBPaths";
-    kb_define('kbpaths', [], function(paths) {
+    define('kbpaths', [], function(paths) {
         requirejs.config({
             baseUrl : 'src/widgets',
             urlArgs: "bust=" + (new Date()).getTime(),

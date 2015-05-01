@@ -12,7 +12,7 @@ VisContainer = React.createClass(
         attachJQ : function() {
 
             var container = this.getDOMNode().parentNode;
-console.log($(container), this.props.kbVis, this.props.options);
+
             $(container)[this.props.kbVis](this.props.options);
 
         },
