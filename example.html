@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-    The magic incantation to compile the kbase widgets is
+    The magic incantation to compile the kbase widgets is, from within src/kbsrc
     r.js -o paths.requireLib=../../../ext/requirejs/2.1.9/require mainConfigFile=kbpaths.js name=all include=requireLib out=kbase.js baseUrl=widgets
 
 -->
@@ -10,37 +10,16 @@
 
     <head>
 
-        <!--<link href="../../ext/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../ext/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="ext/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="ext/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <script data-main = '../../src/kbpaths' src = '../../ext/requirejs/2.1.9/require.js'></script>-->
+        <script src="ext/react/0.13.1/build/react-with-addons.js"></script>
+        <script src="ext/react/0.13.1/build/JSXTransformer.js"></script>
 
-    <link href="ext/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="ext/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src = 'src/kbsrc/kbase.js'></script>
+        <script src = 'app.js'></script>
 
-    <script src="ext/react/0.13.1/build/react-with-addons.js"></script>
-    <script src="ext/react/0.13.1/build/JSXTransformer.js"></script>
-    <script src = 'src/kbsrc/kbase.js'></script>
-    <script src = 'app.js'></script>
 
-<style>
-.bar {
-
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-
-.axis text {
-    font-family: sans-serif;
-    font-size: 11px;
-}
-
-</style>
 
     </head>
 
