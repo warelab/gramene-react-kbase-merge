@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<script type = 'text/javascript'>
+    var kb_use_require = true;
+    var kb_norequire = function(deps, callback) {
+        callback(jQuery);
+    };
+    var kb_nodefine = function(module, deps, callback) {
+        callback(jQuery);
+    };
+    if (kb_use_require) {
+        kb_define = define;
+        kb_require = require;
+    }
+    else {
+        kb_define = kb_nodefine;
+        kb_require = kb_norequire;
+    }
+</script>
+
+    <link href="ext/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="ext/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src = 'ext/jquery/jquery-1.10.2.min.js'></script>
+    <script src = 'ext/bootstrap/3.3.0/js/bootstrap.min.js'></script>
+    <script src = 'ext/d3/d3.v3.min.js'></script>
+
+    <script src="ext/react/0.13.1/build/react-with-addons.js"></script>
+    <script src = 'app.js'></script>
+  </head>
+  <body>
+    <div id="example"></div>
+
+    <script>
+
+        React.render(
+            React.createElement(
+                Vis,
+                {debug : true, width : 640, height : 480}
+            ),
+            document.getElementById('example')
+        );
+
+
+        /*React.render(
+            React.createElement(Accordion,
+                {
+                    panels : [
+                        {
+                            title : 'Title 1',
+                            body : 'Body 1',
+                        },
+                        {
+                            title : 'Title 2',
+                            body : 'Body 2',
+                        },
+                        {
+                            title : 'Title 3',
+                            body : 'Body 3',
+                        },
+                        {
+                            title : 'Title 4',
+                            body : 'Body 4',
+                            initialOpen : true,
+                        },
+                    ]
+                }
+            ),
+            document.getElementById('example')
+        );*/
+    </script>
+
+<!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>-->
+
+  </body>
+</html>
