@@ -11,6 +11,8 @@ console.log("TGOT", taxonomy);
 console.log("STILL HAS TREE", Tree);
     var t = new Tree( { dataset : taxonomy} );
 console.log('constructed');
+console.log("SPECIES ", taxonomy);
+//console.log("SPECIES ", taxonomy.species());
     console.log("MY TREE IS ", t);
 console.log("RENDER INTO ",         document.getElementById('tree1'));
 

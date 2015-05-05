@@ -24517,6 +24517,8 @@ chartBounds : function() {
         )
     );
 
+    return ret;
+
 },
 
 
@@ -25053,7 +25055,7 @@ D3svg : function() {
             D3svg.selectAll('defs').data([null]).enter().append('defs').attr('class', 'definitions');
 
             var $vis = this;
-
+console.log("RV HERE");
             var regionG = D3svg.selectAll('g')
                 .data(regions)
                 .enter()
@@ -25070,7 +25072,7 @@ D3svg : function() {
                                     return 'translate(' + bounds.origin.x + ',' + bounds.origin.y + ')';
                                 }, this)
                         );
-
+console.log("RV HERE2-");
             regionG
                 .append('rect')
                     .attr('x', 0 )
@@ -25561,6 +25563,8 @@ console.log("TGOT", taxonomy);
 console.log("STILL HAS TREE", Tree);
     var t = new Tree( { dataset : taxonomy} );
 console.log('constructed');
+console.log("SPECIES ", taxonomy);
+//console.log("SPECIES ", taxonomy.species());
     console.log("MY TREE IS ", t);
 console.log("RENDER INTO ",         document.getElementById('tree1'));
 

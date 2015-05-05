@@ -279,6 +279,8 @@ chartBounds : function() {
         )
     );
 
+    return ret;
+
 },
 
 
@@ -815,7 +817,7 @@ D3svg : function() {
             D3svg.selectAll('defs').data([null]).enter().append('defs').attr('class', 'definitions');
 
             var $vis = this;
-
+console.log("RV HERE");
             var regionG = D3svg.selectAll('g')
                 .data(regions)
                 .enter()
@@ -832,7 +834,7 @@ D3svg : function() {
                                     return 'translate(' + bounds.origin.x + ',' + bounds.origin.y + ')';
                                 }, this)
                         );
-
+console.log("RV HERE2-");
             regionG
                 .append('rect')
                     .attr('x', 0 )
