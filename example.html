@@ -16,8 +16,13 @@
         <script src="ext/react/0.13.1/build/react-with-addons.js"></script>
         <script src="ext/react/0.13.1/build/JSXTransformer.js"></script>
 
-        <script src = 'src/kbsrc/kbase.js'></script>
-        <script src = 'app.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+
+        <script src = './ext/d3/d3.v3.min.js'></script>
+
+
 
 
 
@@ -25,11 +30,128 @@
 
     <body>
 
-        <div>
+        <div id = 'tree1'></div>
+
+        <script src = 'app.js'></script>
+        <script src = './src/vis/Tree.js'></script>
+
+        <!--<div>
             Simple demonstrations of visualization widgets. Mouse over the charts, they're all interactive.<br>
             The force directed graph has draggable nodes, and they can be selected by drawing on the box.
-        </div>
+        </div>-->
 
+        <div id = 'container'></div>
+        <script type="text/jsx">
+            React.render(
+                <Container>
+                    <SubContainer content = 'a'></SubContainer>
+                    <SubContainer content = 'b'></SubContainer>
+                    <SubContainer content = 'c'></SubContainer>
+                </Container>
+
+                ,
+                document.getElementById('container')
+            )
+        </script>
+
+        <script type="text/jsx">
+        console.log("A1");
+
+
+            var tree = new Tree(
+                {
+                    dataset :
+                        {
+                            "name" : "animals",
+                            "children" : [
+                                {
+                                    "name" : "dogs",
+                                    "children": [
+                                        {
+                                            "name" : "hounds",
+                                            "children" : [
+                                                {"name" : "basset hound", "distance" : 0.5},
+                                                {"name" : "bloodhound"},
+                                                {"name" : "greyhound"},
+                                                {"name" : "beagle"}
+                                            ]
+                                        },
+                                        {
+                                            "name" : "herding dogs",
+                                            "children" : [
+                                                {"name" : "sheepdog"},
+                                                {"name" : "German Shepherd"},
+                                                {"name" : "Collie"},
+                                                {"name" : "Pug"}
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name" : "cats",
+                                    "distance" : 2,
+                                    "children": [
+                                        {
+                                            "name" : "domestic cats",
+                                            "open" : false,
+                                            "children" : [
+                                                {"name" : "Shorthair"},
+                                                {"name" : "Persian"},
+                                                {"name" : "Siamese"},
+                                                {"name" : "Munchkin"}
+                                            ]
+                                        },
+                                        {
+                                            "name" : "wild cats",
+                                            "children" : [
+                                                {
+                                                    "name" : "big cats",
+                                                    "children" : [
+                                                        {"name" : "tiger, the majestic beast which lives in Asia, has pretty stripes, and is the largest of the big cats"},
+                                                        {"name" : "lion"},
+                                                        {"name" : "cougar"},
+                                                        {"name" : "cheetah"}
+                                                    ]
+                                                },
+                                                {
+                                                    "name" : "small cats",
+                                                    "children" : [
+                                                        {"name" : "lynx"},
+                                                        {"name" : "bobcat"},
+                                                        {"name" : "cougar"},
+                                                        {"name" : "cheetah"}
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name" : "fantasy",
+                                    "children": [
+                                        {"name" : "dragon"},
+                                        {"name" : "griffin"},
+                                        {"name" : "phoenix"},
+                                        {"name" : "harpy"}
+                                    ]
+                                }
+                            ]
+                        }
+
+                }
+            );
+            console.log("TB  : ", tree, tree.dataset, tree.get('dataset'));
+//            console.log(tree.renderChart());
+console.log("THERE");
+
+            React.render(
+                <Vis debug = {false} width = "1063" height = "490" vis = {tree}></Vis>
+                , document.getElementById('vis')
+            )
+        </script>
+        <div id = 'vis'></div>
+
+<!--
         <script type="text/jsx">
             require(['all'], function() {
                 $(function() {
@@ -461,7 +583,7 @@
             })
         </script>
         <div id = 'vis'></div>
-
+-->
     </body>
 
 </html>

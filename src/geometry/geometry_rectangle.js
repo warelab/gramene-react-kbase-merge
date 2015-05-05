@@ -1,4 +1,4 @@
-window.Rectangle = function(origin,size) {
+Rectangle = function(origin,size) {
     if (origin == undefined) {
         origin = new Point(-1,-1);
     }
@@ -9,31 +9,31 @@ window.Rectangle = function(origin,size) {
     this.size = size;
 }
 
-window.Rectangle.prototype.invert = function() {
-    return new window.Rectangle(
+Rectangle.prototype.invert = function() {
+    return new Rectangle(
         this.height,
         this.width
     );
 }
 
-window.Rectangle.prototype.lowerRight = function() {
+Rectangle.prototype.lowerRight = function() {
     return new Point(
         this.origin.x + this.size.width,
         this.origin.y + this.size.height
     )
 }
 
-window.Rectangle.prototype.insetRect = function(dx,dy) {
-    return new window.Rectangle(
+Rectangle.prototype.insetRect = function(dx,dy) {
+    return new Rectangle(
         new Point(this.origin.x + dx / 2, this.origin.y + dy / 2),
         new Size(this.size.width - dx, this.size.height - dy)
     );
 }
 
-window.Rectangle.prototype.fromString = function (string) {
+Rectangle.prototype.fromString = function (string) {
     var results;
     if (results = string.match(/{{(.+),\s*(.+)},\s*{(.+),\s*(.+)}}/)) {
-        return new window.Rectangle(
+        return new Rectangle(
             new Point(parseInt(results[1]), parseInt(results[2])),
             new Size(parseInt(results[3]), parseInt(results[4])));
     }
@@ -42,7 +42,7 @@ window.Rectangle.prototype.fromString = function (string) {
     }
 }
 
-window.Rectangle.prototype.intersects = function (r2) {
+Rectangle.prototype.intersects = function (r2) {
     if (
         this.origin.x < r2.origin.x + r2.size.width
         && this.origin.x + this.size.width > r2.origin.x
@@ -57,9 +57,9 @@ window.Rectangle.prototype.intersects = function (r2) {
     }
 }
 
-window.Rectangle.prototype.unionRect = function (r2, padding) {
+Rectangle.prototype.unionRect = function (r2, padding) {
 
-    var union = new window.Rectangle();
+    var union = new Rectangle();
 
     var myLL = this.lowerRight();
     var r2LL = r2.lowerRight();
@@ -84,7 +84,7 @@ window.Rectangle.prototype.unionRect = function (r2, padding) {
 
 }
 
-window.Rectangle.prototype.isValidRect = function() {
+Rectangle.prototype.isValidRect = function() {
     if (
            isNaN(this.origin.x)
         || isNaN(this.origin.y)
@@ -97,9 +97,9 @@ window.Rectangle.prototype.isValidRect = function() {
     }
 }
 
-window.Rectangle.prototype.intersectRect = function(r2) {
+Rectangle.prototype.intersectRect = function(r2) {
 
-    var intersect = new window.Rectangle();
+    var intersect = new Rectangle();
 
     var myLL = this.lowerRight();
     var r2LL = r2.lowerRight();
@@ -125,7 +125,7 @@ window.Rectangle.prototype.intersectRect = function(r2) {
 
 }
 
-window.Rectangle.prototype.containsPoint = function (p) {
+Rectangle.prototype.containsPoint = function (p) {
     var ux = this.origin.x + this.size.width;
     var uy = this.origin.y + this.size.height;
     if (p.x >= this.origin.x && p.x <= ux
@@ -137,7 +137,7 @@ window.Rectangle.prototype.containsPoint = function (p) {
     }
 }
 
-window.Rectangle.prototype.equals = function (r2) {
+Rectangle.prototype.equals = function (r2) {
     if (this == undefined || r2 == undefined) {
         return false;
     }
@@ -149,7 +149,8 @@ window.Rectangle.prototype.equals = function (r2) {
     }
 }
 
-window.Rectangle.prototype.asString = function () {
+Rectangle.prototype.asString = function () {
     return "{" + this.origin.asString() + ", " + this.size.asString() + "}";
 }
 
+module.exports = Rectangle;

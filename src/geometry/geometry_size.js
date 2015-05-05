@@ -1,8 +1,10 @@
-window.Size = function (width, height) {
+var Size = function (width, height) {
     this.width = width;
     this.height = height;
 }
 
-window.Size.prototype.asString = function () {
+Size.prototype.asString = function () {
     return "{" + this.width + ", " + this.height + "}";
 }
+
+module.exports = Size;

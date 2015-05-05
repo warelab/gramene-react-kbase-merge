@@ -1,17 +1,17 @@
-window.Point = function (x,y) {
+Point = function (x,y) {
     this.x = x;
     this.y = y;
 }
 
-window.Point.prototype.asString = function () {
+Point.prototype.asString = function () {
     return "{" + this.x + ", " + this.y + "}";
 }
 
-window.Point.prototype.offset = function(dx, dy) {
-    return new window.Point(this.x + dx, this.y + dy);
+Point.prototype.offset = function(dx, dy) {
+    return new Point(this.x + dx, this.y + dy);
 }
 
-window.Point.prototype.rectWithPoint = function(point) {
+Point.prototype.rectWithPoint = function(point) {
 
     var ux = this.x < point.x
         ? this.x
@@ -28,3 +28,5 @@ window.Point.prototype.rectWithPoint = function(point) {
         new Size (width, height)
     );
 }
+
+module.exports = Point;

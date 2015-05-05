@@ -1,4 +1,4 @@
-function RGBColor(r,g,b) {
+var RGBColor = function (r,g,b) {
     this.r = r;
     this.g = g;
     this.b = b;
@@ -85,3 +85,5 @@ RGBColor.prototype.rgbFromString = function(string) {
         return undefined;
     }
 }
+
+module.exports = RGBColor;

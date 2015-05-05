@@ -1,8 +1,7 @@
-//require('./kbsrc/kbase.js')
 require('./accordion')
-require('./vis')
+require('./Vis.jsx')
 require('./VisContainer')
-//require('./Barchart')
-//require('./Linechart')
-//require('./Piechart')
-//require('./Treechart')
+require('./Container.jsx');
+require('./SubContainer.jsx');
+require('./vis/Tree.js');
+require('./tax-example.js');
