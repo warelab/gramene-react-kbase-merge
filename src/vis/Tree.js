@@ -99,7 +99,7 @@ console.log('a', this.D3svg());
                 .text(root.name);
             rootOffset = rootText[0][0].getBBox().width - 10 + bounds.origin.x;
 var newHeight = 15 * this.countVisibleNodes(this.dataset());
-//this.$elem()().animate({'height' : newHeight + this.options().yGutter + this.options().yPadding}, 500);
+//this.$elem()().animate({'height' : newHeight + this.get('component').props.yGutter + this.get('component').props.yPadding}, 500);
 //            this.$elem().height(newHeight);
 //XXX            this.height(this.$elem().height());
 //this.get('component').props.height = this.$elem().height();
@@ -156,11 +156,12 @@ var chartOffset = 0;
                     if (fakeLeft < minOffset) {
                         minOffset = fakeLeft;
                     }
-
+console.log("MIN MAX", minOffset, maxOffset);
                 }
             );
 
             var widthDelta = 0;
+            console.log("ORIGIN ", bounds.origin.x, minOffset);
             if (minOffset < bounds.origin.x) {
                 widthDelta += bounds.origin.x - minOffset;
                 chartOffset = widthDelta;
@@ -177,15 +178,19 @@ var chartOffset = 0;
 
             chart.selectAll('.fake').remove();
 
-            var newWidth = this.options().xGutter + this.options().yGutter + widthDelta + bounds.size.width;
+            var newWidth = this.get('component').props.xGutter + this.get('component').props.yGutter + widthDelta + bounds.size.width;
             if (newWidth < $tree.options().originalWidth) {
                 newWidth = $tree.options().originalWidth;
             }
-
+            console.log(widthDelta, bounds.size.width, this.get('component').props.xGutter);
+console.log("ANIMATE TO ", newWidth, newHeight + this.get('component').props.yGutter + this.get('component').props.yPadding);
+console.log(this.$elem(), duration);
+            this.get('component').props.width = newWidth;
+            this.get('component').props.height = newHeight;
             this.$elem().animate(
                 {
                     'width' : newWidth,
-                    'height' : newHeight + this.options().yGutter + this.options().yPadding
+                    'height' : newHeight + this.get('component').props.yGutter + this.get('component').props.yPadding
                 },
                 duration
             );
@@ -359,7 +364,9 @@ console.log(this.$elem(), this.get('$elem'), this);
             this.$elem().height(30 * this.countVisibleNodes(this.dataset()));
             console.log(this.$elem().height());
 //XXX            this.height(this.$elem().height());
-//this.get('component').props.height = this.$elem().height();
+
+this.get('component').props.height = this.$elem().height();
+
 
             this.options().originalWidth = this.$elem().width();
 

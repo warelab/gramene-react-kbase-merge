@@ -45,13 +45,14 @@ Vis = React.createClass(
             }
 
             return {
+                debug       : false,
                 xGutter     : 20,
                 xPadding    : 30,
                 yGutter     : 20,
                 yPadding    : 30,
 
                 useIDMapping    : false,
-                bgColor : 'white',
+                bgColor : 'none',
                 scaleXAxis : false,
                 scaleYAxis : false,
                 scaleAxes  : false,
@@ -270,13 +271,14 @@ chartBounds : function() {
     var widgetWidth  = this.props.width;
     var widgetHeight = this.props.height;
 
-    return new Rectangle(
+    var ret = new Rectangle(
         new Point(this.props.xPadding, this.props.yGutter),
         new Size(
             widgetWidth  - this.props.xPadding - this.props.xGutter,
             widgetHeight - this.props.yGutter  - this.props.yPadding
         )
     );
+
 },
 
 
@@ -548,12 +550,12 @@ D3svg : function() {
         render : function() {
 
             return (
-                <div>
+                <div style = {{width : this.props.width + 'px', height : this.props.height + 'px'}}>
                     <style>
                         .axis path, .axis line &#123; fill : none; stroke : black; shape-rendering : crispEdges;&#125; .axis text
                             &#123;font-family : sans-serif; font-size : 11px&#125;
                     </style>
-                    <svg style = {{width : this.props.width + 'px', height : this.props.height + 'px'}}>
+                    <svg style = {{width : '100%', height : '100%'}}>
 
                     </svg>
 

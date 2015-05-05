@@ -22,7 +22,7 @@ define('kbaseVisWidget',
             xGutter     : 20,
             xPadding    : 30,
             yGutter     : 20,
-            yPadding    : 30,
+            yPadding    : 20,
 
             xScaleType      : 'linear',
             yScaleType      : 'linear',
